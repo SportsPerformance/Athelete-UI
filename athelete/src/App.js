@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './Components/home/Home';
+import Event from './Components/event/Event';
+import Navbar from './Components/navbar/Navbar';
+import Profile from './Components/profile/Profile';
+import ProfileForm from './Components/profile/ProfileForm';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Athelete UI
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <div className="App-header">
+          <div className="App-content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/event" element={<Event />} />
+              <Route path="/add-profile" element={<ProfileForm onAddProfile={() => {}} />} /> 
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
+          </div>
+        </div>
+      </div>
+    </Router>
   );
 }
 
